@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style/style.css">
+
+  
+  <title>Frontend Mentor | Weather app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<div id="container">
+  <header>
+    <div class="website-logo"><img src="./assets/images/logo.svg" alt=""></div>
+    <div class="units-container">
+      <button class="units"><img src="./assets/images/icon-units.svg" alt="">Units <img src="./assets/images/icon-dropdown.svg" alt=""></button>
+      <div class="units-dropdown">
+        <div class="switch" data-unit="metric">Switch to Imperial</div>
+
+        <div class="cat-container cat-temp">
+          <div class="category">Temperature</div>
+          <div class="sub-cat sub-met sub-cel sub-temp selected" aria-checked="true" data-value="c">Celcius (°C) <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+          <div class="sub-cat sub-imp sub-fah sub-temp" aria-checked="false" data-value="f">Fahrenheit (°F) <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+        </div>
+        
+        <div class="cat-container cat-ws">
+          <div class="category">Wind Speed</div>
+          <div class="sub-cat sub-wind sub-met sub-kmh selected" aria-checked="true" data-value="kmh">km/h <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+          <div class="sub-cat sub-wind sub-imp sub-mph" aria-checked="false" data-value="mph">mph <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+        </div>
+        
+        <div class="cat-container cat-prec">
+          <div class="category">Precipitation</div>
+          <div class="sub-cat sub-prec sub-met sub-mm selected" aria-checked="true" data-value="mm">Millimeters (mm) <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+          <div class="sub-cat sub-prec sub-imp sub-in" aria-checked="false" data-value="in">Inches (in) <img src="./assets/images/icon-checkmark.svg" alt="" class="chk"></div>
+        </div>
+        
+      </div>
+    
+    </div>
+  </header>
+  <div class="hero">
+    <h1>How's the sky looking today?</h1>
+    <div class="search-bar">
+      <div class="input-field-container">
+        <img src="./assets/images/icon-search.svg" alt="">
+        <input type="text" placeholder="Search for a place..." class="input-field">
+        <ul class="results">
+          <li class="search-result in-progress"><img src="./assets/images/icon-loading.svg" alt="">Search in progress</li>
+          
+        </ul>
+      </div>
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+  <h2 class="no-search-result hide">No search result found!</h2>
+  <main class="wrapper hide">
+    <div class="first-container">
+      <div class="location-temp center">
+        <img src="./assets/images/bg-today-large.svg" alt="" class="bg-large hide">
+        <img src="./assets/images/bg-today-small.svg" alt="" class="bg-small">
+        <div class="lname-date hide">
+          <div class="location">
+            <div class="nameC">Berlin, </div>
+            <div class="countryN">Germany</div> 
+          </div>
+          <div class="date">Tuesday, Aug 5, 2025</div>
+        </div>
+        <div class="weather-temp hide">
+          <img src="./assets/images/icon-rain.webp" alt="" class="l-icon current-temp-img">
+          <div class="current-temp">20°</div>
+        </div>
+        <div class="loading">Loading...</div>
+      </div>
+    
+      <div class="location-stats">
+        <div class="stat">
+          <div class="cat">Feels like</div>
+          <div class="stat-numbers feels-like">-</div>
+        </div>
+        
+        <div class="stat">
+          <div class="cat">Humidity</div>
+          <div class="stat-numbers humidity">-</div>
+        </div>
+
+        <div class="stat">
+          <div class="cat">Wind</div>
+          <div class="stat-numbers wind-speed">-</div>
+        </div>
+      
+        <div class="stat">
+          <div class="cat">Precipitation</div>
+          <div class="stat-numbers precipitation">-</div>
+        </div>
+      </div>
+
+  </div>
+  <div class="second-container">
+    <div>Daily forecast</div>
+
+    <div class="daily-forecast-container">
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+
+      <div class="daily-forecast">
+        <div class="d-day"></div>
+        <div><img src="" alt="" class="daily-icon"></div>
+        <div class="temp-through-day">
+          <div class="max-temp"></div>
+          <div class="min-temp"></div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+    
+    <!-- Insert daily forecast for the next 7 days here -->
+  
+
+  <div class="third-container">
+    <div class="third-container-content">
+      <div class="weekly-day-dropdown">
+        <div>Hourly forecast</div>
+        <div class="day-dropdown-container">
+          <button class="day-dropdown-btn" data-currentday="Tuesday">-<img src="./assets/images/icon-dropdown.svg" alt=""></button>
+          <div class="day-dropdown">
+            <div class="day" aria-checked="false" data-day="Monday"></div>
+            <div class="day" aria-checked="false" data-day="Tuesday"></div>
+            <div class="day" aria-checked="false" data-day="Wednesday"></div>
+            <div class="day" aria-checked="false" data-day="Thursday"></div>
+            <div class="day" aria-checked="false" data-day="Friday"></div>
+            <div class="day" aria-checked="false" data-day="Saturday"></div>
+            <div class="day" aria-checked="false" data-day="Sunday"></div>
+          </div>  
+        </div>  
+      </div>
+
+      <div class="hourly-content">
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">12 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">1 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">2 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">3 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">4 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">5 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">6 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">7 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">8 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">9 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">10 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">11 AM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">12 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">1 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">2 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time"> 
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">3 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">4 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">5 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">6 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">7 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">8 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">9 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">10 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+        
+        <div class="hourly">
+          <div class="time">
+            <div><img src="" alt="" class="hourly-icon"></div>
+            <div class="hourly-time hide">11 PM</div>
+          </div>
+          <div class="h-celcius h-temp"></div>
+        </div>
+
+      </div>
+      
+      
+      
+    </div>
+  </div>
+    
+    <!-- Insert hourly forecast for the selected day here -->
+  </main>
+
+  <div class="err-api-container">
+    <img src="./assets/images/icon-error.svg" alt="" class="error-icon">
+    <div class="err-txt">Something went wrong</div>
+    <p>We couldn't connect to the server (API error). Please try again in a few moments.</p>
+    <button class="retry" onClick="window.location.reload();"><img src="./assets/images/icon-retry.svg" alt="">Retry</button>
+  </div>
+
+</div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Aimin</a>.
+  </div>
+  <script src="./index.js"></script>
+</body>
+</html>
